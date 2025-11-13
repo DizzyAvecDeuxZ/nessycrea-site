@@ -1,294 +1,462 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NessyCrea - Bougies Artisanales Premium</title>
-    <meta name="description" content="Bougies artisanales en cire de soja naturelle, personnalisables et éco-responsables. Fabriquées à la main en France.">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="images/favicon.png">
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NessyCrea • Bougies artisanales</title>
+  <meta name="description" content="NessyCrea - Bougies artisanales luxueuses, naturelles et respectueuses. Découvrez nos 8 créations uniques faites main à Paris.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- HEADER / NAVIGATION -->
+  <header class="header" id="header">
+    <div class="navbar-container container">
+      <!-- Left: Logo + Menu -->
+      <div class="navbar-left">
+        <button class="nav__hamburger" id="nav-hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+        <a href="#accueil" class="logo">
+          <img src="Capture-d-ecran-2025-11-07-100733.jpg" alt="NessyCrea Logo" class="logo-img" loading="eager" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block'">
+          <span class="logo-text" style="display:none;">NessyCrea</span>
+        </a>
+        <!-- Desktop menu -->
+        <nav class="nav nav-desktop" id="main-nav">
+          <ul class="nav__list">
+            <li><a href="#accueil" class="nav__link active">Accueil</a></li>
+            <li><a href="#boutique" class="nav__link">Boutique</a></li>
+            <li><a href="#about" class="nav__link">À propos</a></li>
+            <li><a href="#contact" class="nav__link">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <!-- Right: Cart + Admin -->
+      <div class="navbar-right">
+        <button class="cart-icon-btn" id="cart-btn" aria-label="Panier">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h7.72a2 2 0 0 0 2-1.61l1.38-7.39H6"></path>
+          </svg>
+          <span class="cart-badge" id="cart-badge">0</span>
+        </button>
+        <a href="#admin" class="btn-admin">Accès Admin</a>
+      </div>
+      <!-- Mobile menu popover -->
+      <div class="mobile-menu-popover hidden" id="mobile-menu">
+        <a href="#accueil" class="mobile-menu-link">Accueil</a>
+        <a href="#boutique" class="mobile-menu-link">Boutique</a>
+        <a href="#about" class="mobile-menu-link">À propos</a>
+        <a href="#contact" class="mobile-menu-link">Contact</a>
+        <a href="#admin" class="mobile-menu-link">Accès Admin</a>
+      </div>
+    </div>
+  </header>
 
-    <!-- NAVBAR -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-content">
-                <!-- Logo -->
-                <a href="index.html" class="logo">
-                    <span class="logo-icon">🕯️</span>
-                    <span class="logo-text">NessyCrea</span>
-                </a>
+  <!-- CART DRAWER -->
+  <div class="cart-drawer-backdrop hidden" id="cart-backdrop"></div>
+  <div class="cart-drawer hidden" id="cart-drawer">
+    <div class="cart-drawer-header">
+      <h3>Panier (<span id="cart-count">0</span> article<span id="cart-plural">s</span>)</h3>
+      <button class="cart-close-btn" id="cart-close-btn" aria-label="Fermer le panier">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="cart-drawer-body" id="cart-items">
+      <div class="cart-empty">
+        <svg width="64" height="64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" style="margin: 0 auto 16px; opacity: 0.3;">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h7.72a2 2 0 0 0 2-1.61l1.38-7.39H6"></path>
+        </svg>
+        <p>Votre panier est vide</p>
+      </div>
+    </div>
+    <div class="cart-drawer-footer">
+      <div class="cart-total">
+        <span>TOTAL</span>
+        <span class="cart-total-price" id="cart-total">0.00 €</span>
+      </div>
+      <button class="btn btn--secondary" id="continue-shopping">Continuer les achats</button>
+      <button class="btn btn--primary" id="checkout-btn">Commander</button>
+    </div>
+  </div>
 
-                <!-- Menu Desktop -->
-                <ul class="nav-menu">
-                    <li><a href="index.html" class="active">Accueil</a></li>
-                    <li><a href="boutique.html">Boutique</a></li>
-                    <li><a href="a-propos.html">À propos</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="admin.html" class="nav-admin">Admin</a></li>
-                </ul>
-
-                <!-- Actions -->
-                <div class="nav-actions">
-                    <button class="panier-btn" aria-label="Panier">
-                        🛒
-                        <span class="cart-count">0</span>
-                    </button>
-                    <button class="hamburger-menu" aria-label="Menu">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                </div>
-            </div>
+  <!-- SECTIONS PRINCIPALES -->
+  <main>
+    <!-- ACCUEIL -->
+    <section id="accueil" class="section section-home">
+      <div class="hero">
+        <div class="hero-bg" style="background-image: url('https://user-gen-media-assets.s3.amazonaws.com/seedream_images/4c9478cb-4d35-42bc-9953-c20958c8d0f0.png'); background-size: cover; background-position: center;"></div>
+        <div class="hero-content flex-col items-center justify-center">
+          <h1>NessyCrea - Créations Artisanales</h1>
+          <p class="hero-subtitle">Bougies 100% faites main, naturelles et durables</p>
+          <a href="#boutique" class="btn btn--primary btn--lg cta-hero">Découvrir la collection</a>
         </div>
-    </nav>
+      </div>
+      <section class="section-vedettes container">
+        <h3 class="section-title">Nos Produits Vedettes</h3>
+        <p style="text-align:center;color:var(--nc-brown);margin-top:-10px;margin-bottom:24px;font-size:1.05em;">Découvrez nos bougies les plus appréciées</p>
+        <div class="vedettes-grid flex gap-16">
+          <!-- Cards vedettes insérées via JS -->
+        </div>
+      </section>
+      <section class="section-valeurs container">
+        <h3 class="section-title">Nos Valeurs &amp; Engagements</h3>
+        <p style="text-align:center;color:var(--nc-brown);margin-top:-10px;margin-bottom:24px;font-size:1.05em;">Ce qui nous anime au quotidien</p>
+        <div class="valeurs-cols flex gap-16">
+          <div class="valeur-card">
+            <span class="valeur-icon" aria-label="Fait Main">👐</span>
+            <h4>Fait Main</h4>
+            <p>Chaque bougie est confectionnée à la main avec passion.</p>
+          </div>
+          <div class="valeur-card">
+            <span class="valeur-icon" aria-label="Naturel">🌱</span>
+            <h4>100% Naturel</h4>
+            <p>Cires végétales, parfums sans CMR, conso responsable.</p>
+          </div>
+          <div class="valeur-card">
+            <span class="valeur-icon" aria-label="Éco">♻️</span>
+            <h4>Éco-Responsable</h4>
+            <p>Emballages recyclés et respect de l’environnement.</p>
+          </div>
+        </div>
+      </section>
+      <section class="section-testimonials container">
+        <h3 class="section-title">Témoignages Clients</h3>
+        <p style="text-align:center;color:var(--nc-brown);margin-top:-10px;margin-bottom:24px;font-size:1.05em;">L'avis de ceux qui ont adopté NessyCrea</p>
+        <div class="testimonials-grid flex gap-16">
+          <!-- Témoignages insérés via JS -->
+        </div>
+      </section>
+    </section>
 
-    <!-- Menu Mobile -->
-    <div class="mobile-nav">
-        <ul>
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="boutique.html">Boutique</a></li>
-            <li><a href="a-propos.html">À propos</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="admin.html">Admin</a></li>
+    <!-- BOUTIQUE -->
+    <section id="boutique" class="section section-boutique">
+      <div class="container">
+        <h2 class="section-title">Notre Collection de Bougies</h2>
+        <div class="boutique-filters flex gap-16">
+          <div class="filter-group">
+            <label for="filter-type">Type</label>
+            <select id="filter-type" class="form-control">
+              <option value="">Tous</option>
+              <option value="Luxe">Luxe</option>
+              <option value="Relaxation">Relaxation</option>
+              <option value="Gourmand">Gourmand</option>
+              <option value="Naturel">Naturel</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="filter-price">Prix</label>
+            <select id="filter-price" class="form-control">
+              <option value="">Tous</option>
+              <option value="low">Moins de 25€</option>
+              <option value="mid">25€ à 30€</option>
+              <option value="high">Plus de 30€</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="filter-size">Taille</label>
+            <select id="filter-size" class="form-control">
+              <option value="">Toutes</option>
+              <option value="petit">Petit (90-120g)</option>
+              <option value="moyen">Moyen (140-180g)</option>
+              <option value="grand">Grand (200-300g)</option>
+            </select>
+          </div>
+        </div>
+        <div class="products-grid" id="products-grid">
+          <!-- Bougies affichées via JS -->
+        </div>
+      </div>
+      <!-- Modal détails produit -->
+      <div class="modal-bg hidden" id="modal-bg"></div>
+      <div class="modal hidden" id="product-modal">
+        <div class="modal-content" id="modal-content">
+          <!-- Les détails du produit s'affichent ici -->
+        </div>
+        <button class="btn-close-modal" id="modal-close" aria-label="Fermer">
+          <svg class="close-icon" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+          <span>Fermer</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- À PROPOS -->
+    <section id="about" class="section section-about">
+      <div class="container">
+        <h2 class="section-title">Notre Histoire</h2>
+        <div class="about-story">
+          <div class="story-block block-img-left">
+            <div class="img-story"></div>
+            <div>
+              <h4>Genèse artisanale</h4>
+              <p>NessyCrea est née du désir de proposer des bougies uniques, alliant savoir-faire traditionnel et design moderne. Chaque création évoque l’élégance, la nature et l’émotion d’un lieu chaleureux.</p>
+            </div>
+          </div>
+          <div class="story-block block-img-right">
+            <div>
+              <h4>Un atelier à taille humaine</h4>
+              <p>Nos bougies sont coulées à la main à Paris, avec des matières nobles et éthiques, par la fondatrice inspirée par la lumière et les senteurs.</p>
+            </div>
+            <div class="img-story founder-img"></div>
+          </div>
+        </div>
+        <div class="about-process">
+          <h3 class="process-title">Processus Artisanal</h3>
+          <div class="process-steps flex gap-8">
+            <div class="process-step">
+              <span class="step-icon">🎨</span>
+              <h5>Conception</h5>
+              <p>Élaboration de formules et design élégants.</p>
+            </div>
+            <div class="process-step">
+              <span class="step-icon">🥄</span>
+              <h5>Préparation</h5>
+              <p>Sélection des cires et parfums naturels.</p>
+            </div>
+            <div class="process-step">
+              <span class="step-icon">🕯️</span>
+              <h5>Coulage</h5>
+              <p>Réalisation manuelle, chaque pièce contrôlée.</p>
+            </div>
+            <div class="process-step">
+              <span class="step-icon">✨</span>
+              <h5>Finition</h5>
+              <p>Soin de chaque détail, packaging raffiné.</p>
+            </div>
+          </div>
+        </div>
+        <div class="about-engagements">
+          <h3>Nos Engagements</h3>
+          <ul class="engagements-list">
+            <li><strong>Écologie</strong> : Réduction des déchets et choix responsables</li>
+            <li><strong>Qualité</strong> : Ingrédients purs et contrôle strict</li>
+            <li><strong>Tradition</strong> : Savoir-faire transmis et valorisé</li>
+            <li><strong>Innovation</strong> : Design contemporain, senteurs inédites</li>
+          </ul>
+        </div>
+        <div class="atelier-img-block">
+          <div class="img-atelier"></div>
+        </div>
+        <a href="#contact" class="btn btn--primary btn--lg btn-about-contact">Contactez-nous</a>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section section-contact">
+      <div class="container contact-wrap flex-col">
+        <h2 class="section-title">Contactez-nous</h2>
+        <form id="contact-form" class="form">
+          <div class="form-group">
+            <label for="contact-name">Nom <span class="required">*</span></label>
+            <input type="text" name="name" id="contact-name" class="form-control" required>
+            <span class="form-error"></span>
+          </div>
+          <div class="form-group">
+            <label for="contact-email">Email <span class="required">*</span></label>
+            <input type="email" name="email" id="contact-email" class="form-control" required>
+            <span class="form-error"></span>
+          </div>
+          <div class="form-group">
+            <label for="contact-subject">Sujet</label>
+            <input type="text" name="subject" id="contact-subject" class="form-control">
+            <span class="form-error"></span>
+          </div>
+          <div class="form-group">
+            <label for="contact-message">Message <span class="required">*</span></label>
+            <textarea name="message" id="contact-message" class="form-control" rows="4" required></textarea>
+            <span class="form-error"></span>
+          </div>
+          <button type="submit" class="btn btn--primary btn--lg form-btn">Envoyer</button>
+          <div id="form-success" class="form-success hidden">
+            <span class="success-check">✓</span> Message envoyé avec succès !
+          </div>
+        </form>
+        <div class="contact-infos flex gap-16">
+          <div class="contact-info">
+            <h4>Email</h4>
+            <p><a href="mailto:contact@nessycrea.fr">contact@nessycrea.fr</a></p>
+          </div>
+          <div class="contact-info">
+            <h4>Téléphone</h4>
+            <p><a href="tel:+33612345678">+33 6 12 34 56 78</a></p>
+          </div>
+          <div class="contact-info">
+            <h4>Adresse</h4>
+            <p>123 Rue de la Créativité, 75001 Paris</p>
+          </div>
+          <div class="contact-info">
+            <h4>Horaires</h4>
+            <p>Lun-Ven: 10h-18h<br>Sam: 14h-19h</p>
+          </div>
+        </div>
+        <div class="contact-map">
+          <h3 class="section-title" style="margin-top: 40px; margin-bottom: 20px;">Localisation</h3>
+          <div class="maps-container">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9916256937595!2d2.3200410156743516!3d48.8588443793276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e2964e34e2d%3A0x8ddca9ee380ef7e0!2sLouvre%20Museum!5m2!1sen!2sfr" 
+              width="100%" 
+              height="450" 
+              style="border:none; border-radius: 8px;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Localisation NessyCrea">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADMIN LOGIN -->
+    <section id="admin" class="section section-admin-login">
+      <div class="container">
+        <h2 class="section-title">Accès Administrateur</h2>
+        <div class="admin-login-wrap">
+          <form id="admin-login-form" class="form admin-form">
+            <div class="form-group">
+              <label for="admin-email">Email <span class="required">*</span></label>
+              <input type="email" name="email" id="admin-email" class="form-control" required placeholder="admin@nessycrea.fr">
+              <span class="form-error" id="admin-email-error"></span>
+            </div>
+            <div class="form-group">
+              <label for="admin-password">Mot de passe <span class="required">*</span></label>
+              <input type="password" name="password" id="admin-password" class="form-control" required placeholder="Votre mot de passe">
+              <span class="form-error" id="admin-password-error"></span>
+            </div>
+            <button type="submit" class="btn btn--primary btn--lg form-btn">Se connecter</button>
+            <div id="admin-login-error" class="form-error" style="text-align:center;margin-top:12px;display:none;"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADMIN DASHBOARD (Hidden by default) -->
+    <section id="admin-dashboard" class="section section-admin-dashboard hidden">
+      <div class="container">
+        <div class="admin-header flex justify-between items-center">
+          <h2 class="section-title" style="margin:0;">Tableau de Bord Administrateur</h2>
+          <button id="admin-logout" class="btn btn--secondary">Déconnexion</button>
+        </div>
+        <div class="admin-welcome">Bienvenue, Admin !</div>
+        
+        <div class="admin-tabs">
+          <button class="admin-tab-btn active" data-tab="stats">📈 Statistiques</button>
+          <button class="admin-tab-btn" data-tab="dashboard">📊 Tableau de Bord</button>
+          <button class="admin-tab-btn" data-tab="products">🛍️ Gestion Produits</button>
+          <button class="admin-tab-btn" data-tab="messages">💬 Messages</button>
+        </div>
+
+        <div class="admin-tab-content">
+          <!-- Stats Tab -->
+          <div class="admin-tab-panel active" data-panel="stats">
+            <h3>Statistiques du site</h3>
+            <div class="admin-stats-grid">
+              <div class="admin-stat-card">
+                <div class="stat-icon">🕯️</div>
+                <div class="stat-value">8</div>
+                <div class="stat-label">Produits</div>
+              </div>
+              <div class="admin-stat-card">
+                <div class="stat-icon">💬</div>
+                <div class="stat-value" id="messages-count">0</div>
+                <div class="stat-label">Messages</div>
+              </div>
+              <div class="admin-stat-card">
+                <div class="stat-icon">⭐</div>
+                <div class="stat-value">4.9</div>
+                <div class="stat-label">Note Moyenne</div>
+              </div>
+              <div class="admin-stat-card">
+                <div class="stat-icon">✨</div>
+                <div class="stat-value">3</div>
+                <div class="stat-label">Témoignages</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dashboard Tab -->
+          <div class="admin-tab-panel" data-panel="dashboard">
+            <div class="dashboard-header">
+              <h3>📊 Tableau de Bord NessyCrea</h3>
+              <p>Accédez à vos statistiques et données en temps réel</p>
+            </div>
+            <div class="dashboard-container">
+              <div class="dashboard-frame-wrap">
+                <iframe id="dashboard-iframe" src="https://nessycrea-dashboard-wvap.vercel.app/dashboard" frameborder="0" class="dashboard-iframe" loading="lazy" title="Dashboard NessyCrea" width="100%" height="800"></iframe>
+              </div>
+            </div>
+          </div>
+
+          <!-- Products Tab -->
+          <div class="admin-tab-panel" data-panel="products">
+            <h3>Liste des Produits</h3>
+            <div id="admin-products-list" class="admin-products-list"></div>
+          </div>
+
+          <!-- Messages Tab -->
+          <div class="admin-tab-panel" data-panel="messages">
+            <h3>Messages Reçus</h3>
+            <div id="admin-messages-list" class="admin-messages-list">
+              <p style="color:#6B5344;text-align:center;padding:20px;">Aucun message pour le moment.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DASHBOARD (Kept for reference, but hidden from public) -->
+    <section id="dashboard" class="section section-dashboard hidden">
+      <div class="container">
+        <h2 class="section-title">Tableau de Bord</h2>
+        <div class="dashboard-frame-wrap">
+          <iframe id="dashboard-iframe" src="https://nessycrea-dashboard-wvap.vercel.app/dashboard" frameborder="0" class="dashboard-iframe" loading="lazy" title="Dashboard"
+            width="100%" height="600" onerror="document.getElementById('dashboard-frame-alt').classList.remove('hidden');"></iframe>
+          <div id="dashboard-frame-alt" class="hidden dashboard-alt">
+            <p>Le dashboard n'a pas pu être chargé. <a href="https://nessycrea-dashboard-wvap.vercel.app/dashboard" target="_blank">Accéder directement au dashboard</a>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container flex-col items-center">
+      <nav class="footer-nav">
+        <ul class="footer-menu flex gap-8">
+          <li><a href="#accueil">Accueil</a></li>
+          <li><a href="#boutique">Boutique</a></li>
+          <li><a href="#about">À propos</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#admin">Admin</a></li>
         </ul>
+      </nav>
+      <div class="footer-social flex gap-8">
+        <a href="#" aria-label="Instagram" class="footer-icon">&#x1F4F7;</a>
+        <a href="#" aria-label="Facebook" class="footer-icon">&#x1F426;</a>
+        <a href="#" aria-label="Pinterest" class="footer-icon">&#x1F497;</a>
+      </div>
+      <div class="footer-contact-quick">
+        <p>Email : <a href="mailto:contact@nessycrea.fr">contact@nessycrea.fr</a></p>
+        <p>Tél : <a href="tel:+33612345678">+33 6 12 34 56 78</a></p>
+      </div>
+      <div class="copyright">
+        &copy; 2025 NessyCrea. Tous droits réservés.
+      </div>
     </div>
+  </footer>
 
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <div class="hero-background"></div>
-        <div class="container">
-            <div class="hero-content">
-                <span class="hero-badge">✨ Collection Exclusive 2025</span>
-                <h1 class="hero-title">Illuminez Vos <span class="text-gold">Émotions</span></h1>
-                <p class="hero-subtitle">Bougies artisanales en cire de soja naturelle, entièrement personnalisables. Chaque flamme raconte votre histoire.</p>
-                <div class="hero-buttons">
-                    <a href="boutique.html" class="btn btn-primary">
-                        Découvrir la Collection
-                        <span class="btn-icon">→</span>
-                    </a>
-                    <a href="contact.html" class="btn btn-outline">
-                        Créer ma Bougie Unique
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PRODUITS VEDETTES -->
-    <section class="section products-section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-badge">Nos Best-Sellers</span>
-                <h2 class="section-title">Produits Vedettes</h2>
-                <p class="section-subtitle">Découvrez nos bougies les plus appréciées</p>
-            </div>
-
-            <div class="products-grid">
-                <!-- Produit 1 -->
-                <div class="product-card" data-product-id="1" data-type="Gourmand" data-price="24.99" data-size="grand">
-                    <div class="product-badge">⭐ Best Seller</div>
-                    <div class="product-image-container">
-                        <img src="https://user-gen-media-assets.s3.amazonaws.com/seedream_images/5ff06277-c960-49ff-88c3-80023c260e0d.png" alt="Bougie Vanille Douce" class="product-image" loading="lazy">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Bougie Vanille Douce</h3>
-                        <div class="product-rating">
-                            ⭐⭐⭐⭐⭐ <span>(128 avis)</span>
-                        </div>
-                        <p class="product-price">24.99€</p>
-                        <button class="btn btn-add-cart" onclick="addToCart('1', 'Bougie Vanille Douce', '24.99', 'https://user-gen-media-assets.s3.amazonaws.com/seedream_images/5ff06277-c960-49ff-88c3-80023c260e0d.png')">
-                            Ajouter au panier
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Produit 2 -->
-                <div class="product-card" data-product-id="2" data-type="Relaxation" data-price="26.99" data-size="moyen">
-                    <div class="product-image-container">
-                        <img src="https://user-gen-media-assets.s3.amazonaws.com/seedream_images/993b049d-633d-48d0-8a2d-71d2ad01fe98.png" alt="Lavande Provence" class="product-image" loading="lazy">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Lavande Provence</h3>
-                        <div class="product-rating">
-                            ⭐⭐⭐⭐⭐ <span>(96 avis)</span>
-                        </div>
-                        <p class="product-price">26.99€</p>
-                        <button class="btn btn-add-cart" onclick="addToCart('2', 'Lavande Provence', '26.99', 'https://user-gen-media-assets.s3.amazonaws.com/seedream_images/993b049d-633d-48d0-8a2d-71d2ad01fe98.png')">
-                            Ajouter au panier
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Produit 3 -->
-                <div class="product-card" data-product-id="3" data-type="Naturel" data-price="22.99" data-size="petit">
-                    <div class="product-image-container">
-                        <img src="https://user-gen-media-assets.s3.amazonaws.com/seedream_images/3ac59884-6810-456c-9bd2-191aa9ea7368.png" alt="Eucalyptus Menthe" class="product-image" loading="lazy">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Eucalyptus Menthe</h3>
-                        <div class="product-rating">
-                            ⭐⭐⭐⭐ <span>(85 avis)</span>
-                        </div>
-                        <p class="product-price">22.99€</p>
-                        <button class="btn btn-add-cart" onclick="addToCart('3', 'Eucalyptus Menthe', '22.99', 'https://user-gen-media-assets.s3.amazonaws.com/seedream_images/3ac59884-6810-456c-9bd2-191aa9ea7368.png')">
-                            Ajouter au panier
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section-footer">
-                <a href="boutique.html" class="btn btn-secondary">Voir toute la collection →</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- VALEURS -->
-    <section class="section values-section">
-        <div class="container">
-            <div class="values-grid">
-                <div class="value-card">
-                    <div class="value-icon">🌿</div>
-                    <h3 class="value-title">100% Naturel</h3>
-                    <p class="value-text">Cire de soja végétale, sans paraffine ni produits chimiques</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">🇫🇷</div>
-                    <h3 class="value-title">Fait en France</h3>
-                    <p class="value-text">Artisanat français, façonné à la main avec passion</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">♻️</div>
-                    <h3 class="value-title">Éco-Responsable</h3>
-                    <p class="value-text">Emballages recyclables, engagement environnemental</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">🎨</div>
-                    <h3 class="value-title">Personnalisable</h3>
-                    <p class="value-text">Couleurs, parfums, messages gravés selon vos envies</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- TÉMOIGNAGES -->
-    <section class="section testimonials-section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-badge">⭐ 4.9/5 sur 200 avis</span>
-                <h2 class="section-title">Ils nous font confiance</h2>
-            </div>
-
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
-                    <p class="testimonial-text">"J'ai commandé des bougies personnalisées pour mon mariage. Le résultat était absolument magnifique ! Tous mes invités ont adoré. Service impeccable."</p>
-                    <div class="testimonial-author">
-                        <strong>Sophie Martin</strong>
-                        <span>Mariée 2024</span>
-                    </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
-                    <p class="testimonial-text">"Qualité exceptionnelle, odeurs sublimes et durée de combustion incroyable. Je recommande à 100% pour tous vos événements spéciaux."</p>
-                    <div class="testimonial-author">
-                        <strong>Marie Dubois</strong>
-                        <span>Cliente régulière</span>
-                    </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
-                    <p class="testimonial-text">"Très satisfaite de mon achat ! Les bougies sont magnifiques et l'équipe est très professionnelle. L'ambiance créée est magique."</p>
-                    <div class="testimonial-author">
-                        <strong>Emma Laurent</strong>
-                        <span>Décoratrice d'intérieur</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA FINAL -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2 class="cta-title">Prêt à créer votre bougie unique ?</h2>
-                <p class="cta-subtitle">Commencez votre voyage olfactif et illuminez vos moments précieux</p>
-                <div class="cta-buttons">
-                    <a href="boutique.html" class="btn btn-primary">Découvrir la boutique</a>
-                    <a href="contact.html" class="btn btn-outline-white">Nous contacter</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3 class="footer-title">NessyCrea</h3>
-                    <p class="footer-text">Bougies artisanales premium en cire de soja naturelle. Fabriquées à la main en France avec passion.</p>
-                </div>
-                <div class="footer-section">
-                    <h4 class="footer-subtitle">Navigation</h4>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Accueil</a></li>
-                        <li><a href="boutique.html">Boutique</a></li>
-                        <li><a href="a-propos.html">À propos</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4 class="footer-subtitle">Contact</h4>
-                    <ul class="footer-links">
-                        <li>📧 contact@nessycrea.fr</li>
-                        <li>📞 01 23 45 67 89</li>
-                        <li>📍 123 Rue de la Créativité, Paris</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 NessyCrea. Tous droits réservés.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- DRAWER PANIER (FERMÉ PAR DÉFAUT) -->
-    <div class="cart-drawer">
-        <div class="cart-header">
-            <h3>Mon Panier</h3>
-            <button class="close-cart" aria-label="Fermer">×</button>
-        </div>
-        <div class="cart-items"></div>
-        <div class="cart-footer">
-            <div class="cart-total-container">
-                <span>Total:</span>
-                <span class="cart-total">0.00€</span>
-            </div>
-            <button class="btn btn-primary btn-checkout">Commander</button>
-            <button class="btn btn-outline close-cart">Continuer les achats</button>
-        </div>
-    </div>
-
-    <!-- Overlay -->
-    <div class="cart-overlay"></div>
-
-    <!-- JavaScript -->
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
