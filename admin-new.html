@@ -405,215 +405,6 @@
             font-weight: 500;
         }
 
-        .admin-stat-trend {
-            font-size: 12px;
-            font-weight: 500;
-            margin-top: 8px;
-            display: inline-block;
-            padding: 4px 8px;
-            border-radius: 6px;
-        }
-
-        .admin-stat-trend.positive {
-            color: #2C5F5D;
-            background: rgba(44, 95, 93, 0.1);
-        }
-
-        .admin-stat-trend.neutral {
-            color: #8B7355;
-            background: rgba(139, 115, 85, 0.1);
-        }
-
-        /* Dashboard Grid Layout */
-        .admin-dashboard-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            margin-top: 24px;
-        }
-
-        .admin-dashboard-left {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-        }
-
-        .admin-dashboard-right {
-            min-height: 800px;
-        }
-
-        /* Section Cards */
-        .admin-section-card {
-            background: white;
-            border-radius: 16px;
-            padding: 24px;
-            box-shadow: 0 2px 12px rgba(94, 82, 64, 0.08);
-        }
-
-        .admin-section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 16px;
-            border-bottom: 2px solid var(--admin-cream);
-        }
-
-        .admin-section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 20px;
-            color: var(--admin-brown);
-            font-weight: 600;
-        }
-
-        .admin-link-small {
-            color: var(--admin-teal);
-            font-size: 14px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .admin-link-small:hover {
-            color: #1f4a48;
-        }
-
-        /* Orders List */
-        .admin-orders-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .admin-order-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px;
-            background: var(--admin-cream);
-            border-radius: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .admin-order-item:hover {
-            background: rgba(212, 197, 169, 0.15);
-            transform: translateX(4px);
-        }
-
-        .admin-order-id {
-            font-weight: 600;
-            color: var(--admin-brown);
-            font-size: 14px;
-            margin-bottom: 4px;
-        }
-
-        .admin-order-customer {
-            color: #8B7355;
-            font-size: 13px;
-        }
-
-        .admin-order-details {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .admin-order-amount {
-            font-weight: 600;
-            color: var(--admin-teal);
-            font-size: 15px;
-        }
-
-        /* Badges */
-        .admin-badge {
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 500;
-        }
-
-        .admin-badge.success {
-            background: rgba(44, 95, 93, 0.1);
-            color: var(--admin-teal);
-        }
-
-        .admin-badge.warning {
-            background: rgba(212, 197, 169, 0.2);
-            color: #8B7355;
-        }
-
-        /* Products List */
-        .admin-products-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .admin-product-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px;
-            background: var(--admin-cream);
-            border-radius: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .admin-product-item:hover {
-            background: rgba(212, 197, 169, 0.15);
-            transform: translateX(4px);
-        }
-
-        .admin-product-info {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .admin-product-emoji {
-            font-size: 32px;
-            width: 56px;
-            height: 56px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: white;
-            border-radius: 12px;
-        }
-
-        .admin-product-name {
-            font-weight: 600;
-            color: var(--admin-brown);
-            font-size: 15px;
-            margin-bottom: 4px;
-        }
-
-        .admin-product-sales {
-            color: #8B7355;
-            font-size: 13px;
-        }
-
-        .admin-product-revenue {
-            font-weight: 700;
-            color: var(--admin-teal);
-            font-size: 18px;
-        }
-
-        /* Dashboard Iframe Section */
-        .admin-iframe-section {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .admin-dashboard-iframe-wrapper {
-            flex: 1;
-            min-height: 700px;
-            border-radius: 12px;
-            overflow: hidden;
-            background: #f5f5f5;
-        }
-
         /* Dashboard Iframe */
         .admin-dashboard-section {
             background: white;
@@ -658,16 +449,6 @@
             }
         }
 
-        @media (max-width: 1200px) {
-            .admin-dashboard-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .admin-dashboard-right {
-                min-height: 600px;
-            }
-        }
-
         @media (max-width: 768px) {
             :root {
                 --admin-sidebar-width: 0px;
@@ -688,17 +469,6 @@
 
             .admin-stats-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .admin-order-item,
-            .admin-product-item {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 12px;
-            }
-
-            .admin-product-info {
-                width: 100%;
             }
         }
     </style>
@@ -828,14 +598,13 @@
             </header>
 
             <div class="admin-content">
-                <!-- Stats Cards avec tendances -->
+                <!-- Stats Cards -->
                 <div class="admin-stats-grid">
                     <div class="admin-stat-card">
                         <div class="admin-stat-header">
                             <div>
                                 <div class="admin-stat-value">24</div>
-                                <div class="admin-stat-label">Commandes du mois</div>
-                                <div class="admin-stat-trend positive">+12% vs mois dernier</div>
+                                <div class="admin-stat-label">Commandes</div>
                             </div>
                             <div class="admin-stat-icon teal">📦</div>
                         </div>
@@ -844,20 +613,8 @@
                     <div class="admin-stat-card">
                         <div class="admin-stat-header">
                             <div>
-                                <div class="admin-stat-value">2.847€</div>
-                                <div class="admin-stat-label">Chiffre d'affaires</div>
-                                <div class="admin-stat-trend positive">+8% vs mois dernier</div>
-                            </div>
-                            <div class="admin-stat-icon teal">💰</div>
-                        </div>
-                    </div>
-
-                    <div class="admin-stat-card">
-                        <div class="admin-stat-header">
-                            <div>
                                 <div class="admin-stat-value">42</div>
-                                <div class="admin-stat-label">Produits actifs</div>
-                                <div class="admin-stat-trend neutral">Aucun changement</div>
+                                <div class="admin-stat-label">Produits</div>
                             </div>
                             <div class="admin-stat-icon beige">🛍️</div>
                         </div>
@@ -867,172 +624,68 @@
                         <div class="admin-stat-header">
                             <div>
                                 <div class="admin-stat-value">156</div>
-                                <div class="admin-stat-label">Clients fidèles</div>
-                                <div class="admin-stat-trend positive">+5 ce mois-ci</div>
+                                <div class="admin-stat-label">Clients</div>
                             </div>
                             <div class="admin-stat-icon brown">👥</div>
                         </div>
                     </div>
+
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-header">
+                            <div>
+                                <div class="admin-stat-value">2.4k€</div>
+                                <div class="admin-stat-label">Revenu</div>
+                            </div>
+                            <div class="admin-stat-icon teal">💰</div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Grid Layout 2 colonnes -->
-                <div class="admin-dashboard-grid">
-                    <!-- Colonne Gauche -->
-                    <div class="admin-dashboard-left">
-                        <!-- Dernières Commandes -->
-                        <div class="admin-section-card">
-                            <div class="admin-section-header">
-                                <h3 class="admin-section-title">Dernières Commandes</h3>
-                                <a href="#" class="admin-link-small">Voir tout →</a>
-                            </div>
-                            <div class="admin-orders-list">
-                                <div class="admin-order-item">
-                                    <div class="admin-order-info">
-                                        <div class="admin-order-id">#CMD-2024-048</div>
-                                        <div class="admin-order-customer">Marie Dubois</div>
-                                    </div>
-                                    <div class="admin-order-details">
-                                        <div class="admin-order-amount">89,90€</div>
-                                        <span class="admin-badge success">Livrée</span>
-                                    </div>
-                                </div>
-
-                                <div class="admin-order-item">
-                                    <div class="admin-order-info">
-                                        <div class="admin-order-id">#CMD-2024-047</div>
-                                        <div class="admin-order-customer">Sophie Martin</div>
-                                    </div>
-                                    <div class="admin-order-details">
-                                        <div class="admin-order-amount">124,50€</div>
-                                        <span class="admin-badge warning">En cours</span>
-                                    </div>
-                                </div>
-
-                                <div class="admin-order-item">
-                                    <div class="admin-order-info">
-                                        <div class="admin-order-id">#CMD-2024-046</div>
-                                        <div class="admin-order-customer">Lucas Bernard</div>
-                                    </div>
-                                    <div class="admin-order-details">
-                                        <div class="admin-order-amount">67,00€</div>
-                                        <span class="admin-badge success">Livrée</span>
-                                    </div>
-                                </div>
-
-                                <div class="admin-order-item">
-                                    <div class="admin-order-info">
-                                        <div class="admin-order-id">#CMD-2024-045</div>
-                                        <div class="admin-order-customer">Emma Petit</div>
-                                    </div>
-                                    <div class="admin-order-details">
-                                        <div class="admin-order-amount">156,20€</div>
-                                        <span class="admin-badge warning">En préparation</span>
-                                    </div>
-                                </div>
-
-                                <div class="admin-order-item">
-                                    <div class="admin-order-info">
-                                        <div class="admin-order-id">#CMD-2024-044</div>
-                                        <div class="admin-order-customer">Thomas Leroy</div>
-                                    </div>
-                                    <div class="admin-order-details">
-                                        <div class="admin-order-amount">98,75€</div>
-                                        <span class="admin-badge success">Livrée</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Produits Populaires -->
-                        <div class="admin-section-card">
-                            <div class="admin-section-header">
-                                <h3 class="admin-section-title">Produits les plus vendus</h3>
-                                <a href="#" class="admin-link-small">Voir tout →</a>
-                            </div>
-                            <div class="admin-products-list">
-                                <div class="admin-product-item">
-                                    <div class="admin-product-info">
-                                        <div class="admin-product-emoji">🕯️</div>
-                                        <div>
-                                            <div class="admin-product-name">Bougie Lavande Premium</div>
-                                            <div class="admin-product-sales">47 ventes ce mois</div>
-                                        </div>
-                                    </div>
-                                    <div class="admin-product-revenue">1.457€</div>
-                                </div>
-
-                                <div class="admin-product-item">
-                                    <div class="admin-product-info">
-                                        <div class="admin-product-emoji">🕯️</div>
-                                        <div>
-                                            <div class="admin-product-name">Coffret Découverte</div>
-                                            <div class="admin-product-sales">38 ventes ce mois</div>
-                                        </div>
-                                    </div>
-                                    <div class="admin-product-revenue">1.254€</div>
-                                </div>
-
-                                <div class="admin-product-item">
-                                    <div class="admin-product-info">
-                                        <div class="admin-product-emoji">🕯️</div>
-                                        <div>
-                                            <div class="admin-product-name">Bougie Vanille Intense</div>
-                                            <div class="admin-product-sales">32 ventes ce mois</div>
-                                        </div>
-                                    </div>
-                                    <div class="admin-product-revenue">896€</div>
-                                </div>
-
-                                <div class="admin-product-item">
-                                    <div class="admin-product-info">
-                                        <div class="admin-product-emoji">🕯️</div>
-                                        <div>
-                                            <div class="admin-product-name">Bougie Fleur d'Oranger</div>
-                                            <div class="admin-product-sales">28 ventes ce mois</div>
-                                        </div>
-                                    </div>
-                                    <div class="admin-product-revenue">784€</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Colonne Droite - Dashboard Vercel Intégré -->
-                    <div class="admin-dashboard-right">
-                        <div class="admin-section-card admin-iframe-section">
-                            <div class="admin-section-header">
-                                <h3 class="admin-section-title">📊 Dashboard Complet NessyCrea</h3>
-                            </div>
-                            <div class="admin-dashboard-iframe-wrapper">
-                                <iframe
-                                    src="https://nessycrea-dashboard-wvap.vercel.app"
-                                    class="admin-dashboard-iframe"
-                                    title="Dashboard NessyCrea"
-                                    allow="clipboard-read; clipboard-write"
-                                    loading="lazy">
-                                </iframe>
-                            </div>
-                        </div>
-                    </div>
+                <!-- Dashboard Iframe -->
+                <div class="admin-dashboard-section">
+                    <iframe
+                        src="https://nessycrea-dashboard-wvap.vercel.app/dashboard"
+                        class="admin-dashboard-iframe"
+                        title="Dashboard NessyCrea"
+                        allow="clipboard-read; clipboard-write"
+                        loading="lazy">
+                    </iframe>
                 </div>
             </div>
         </main>
     </div>
 
     <script>
-        // Login Form Handler - Accepte n'importe quels identifiants
+        // Login Form Handler
         document.getElementById('adminLoginForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
-            // Pas de validation - on accepte tout et on affiche le dashboard
-            document.getElementById('loginPage').style.display = 'none';
-            document.getElementById('adminDashboard').classList.add('active');
+            const email = document.getElementById('adminEmail').value;
+            const password = document.getElementById('adminPassword').value;
+
+            // Simple validation (in production, this should be server-side)
+            if (email === 'admin@nessycrea.fr' && password === 'admin123') {
+                document.getElementById('loginPage').style.display = 'none';
+                document.getElementById('adminDashboard').classList.add('active');
+
+                // Store login state
+                sessionStorage.setItem('adminLoggedIn', 'true');
+            } else {
+                alert('Identifiants incorrects!');
+            }
         });
 
         // Logout Function
         function logoutAdmin() {
+            sessionStorage.removeItem('adminLoggedIn');
             document.getElementById('loginPage').style.display = 'flex';
             document.getElementById('adminDashboard').classList.remove('active');
+        }
+
+        // Check if already logged in
+        if (sessionStorage.getItem('adminLoggedIn') === 'true') {
+            document.getElementById('loginPage').style.display = 'none';
+            document.getElementById('adminDashboard').classList.add('active');
         }
     </script>
 </body>
