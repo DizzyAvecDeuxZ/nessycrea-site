@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NessyCrea - Bougies Artisanales Premium</title>
+    <meta name="description" content="Bougies artisanales en cire de soja naturelle, personnalisables et éco-responsables. Fabriquées à la main en France.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <!-- Logo -->
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">🕯️</span>
+                    <span class="logo-text">NessyCrea</span>
+                </a>
+
+                <!-- Menu Desktop -->
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="active">Accueil</a></li>
+                    <li><a href="boutique.html">Boutique</a></li>
+                    <li><a href="a-propos.html">À propos</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="admin.html" class="nav-admin">Admin</a></li>
+                </ul>
+
+                <!-- Actions -->
+                <div class="nav-actions">
+                    <button class="panier-btn" aria-label="Panier">
+                        🛒
+                        <span class="cart-count">0</span>
+                    </button>
+                    <button class="hamburger-menu" aria-label="Menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Menu Mobile -->
+    <div class="mobile-nav">
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="boutique.html">Boutique</a></li>
+            <li><a href="a-propos.html">À propos</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="admin.html">Admin</a></li>
+        </ul>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-background"></div>
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-badge">✨ Collection Exclusive 2025</span>
+                <h1 class="hero-title">Illuminez Vos <span class="text-gold">Émotions</span></h1>
+                <p class="hero-subtitle">Bougies artisanales en cire de soja naturelle, entièrement personnalisables. Chaque flamme raconte votre histoire.</p>
+                <div class="hero-buttons">
+                    <a href="boutique.html" class="btn btn-primary">
+                        Découvrir la Collection
+                        <span class="btn-icon">→</span>
+                    </a>
+                    <a href="contact.html" class="btn btn-outline">
+                        Créer ma Bougie Unique
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUITS VEDETTES -->
+    <section class="section products-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Nos Best-Sellers</span>
+                <h2 class="section-title">Produits Vedettes</h2>
+                <p class="section-subtitle">Découvrez nos bougies les plus appréciées</p>
+            </div>
+
+            <div class="products-grid">
+                <!-- Produit 1 -->
+                <div class="product-card" data-product-id="1" data-type="Gourmand" data-price="24.99" data-size="grand">
+                    <div class="product-badge">⭐ Best Seller</div>
+                    <div class="product-image-container">
+                        <img src="https://user-gen-media-assets.s3.amazonaws.com/seedream_images/5ff06277-c960-49ff-88c3-80023c260e0d.png" alt="Bougie Vanille Douce" class="product-image" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Bougie Vanille Douce</h3>
+                        <div class="product-rating">
+                            ⭐⭐⭐⭐⭐ <span>(128 avis)</span>
+                        </div>
+                        <p class="product-price">24.99€</p>
+                        <button class="btn btn-add-cart" onclick="addToCart('1', 'Bougie Vanille Douce', '24.99', 'https://user-gen-media-assets.s3.amazonaws.com/seedream_images/5ff06277-c960-49ff-88c3-80023c260e0d.png')">
+                            Ajouter au panier
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Produit 2 -->
+                <div class="product-card" data-product-id="2" data-type="Relaxation" data-price="26.99" data-size="moyen">
+                    <div class="product-image-container">
+                        <img src="https://user-gen-media-assets.s3.amazonaws.com/seedream_images/993b049d-633d-48d0-8a2d-71d2ad01fe98.png" alt="Lavande Provence" class="product-image" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Lavande Provence</h3>
+                        <div class="product-rating">
+                            ⭐⭐⭐⭐⭐ <span>(96 avis)</span>
+                        </div>
+                        <p class="product-price">26.99€</p>
+                        <button class="btn btn-add-cart" onclick="addToCart('2', 'Lavande Provence', '26.99', 'https://user-gen-media-assets.s3.amazonaws.com/seedream_images/993b049d-633d-48d0-8a2d-71d2ad01fe98.png')">
+                            Ajouter au panier
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Produit 3 -->
+                <div class="product-card" data-product-id="3" data-type="Naturel" data-price="22.99" data-size="petit">
+                    <div class="product-image-container">
+                        <img src="https://user-gen-media-assets.s3.amazonaws.com/seedream_images/3ac59884-6810-456c-9bd2-191aa9ea7368.png" alt="Eucalyptus Menthe" class="product-image" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Eucalyptus Menthe</h3>
+                        <div class="product-rating">
+                            ⭐⭐⭐⭐ <span>(85 avis)</span>
+                        </div>
+                        <p class="product-price">22.99€</p>
+                        <button class="btn btn-add-cart" onclick="addToCart('3', 'Eucalyptus Menthe', '22.99', 'https://user-gen-media-assets.s3.amazonaws.com/seedream_images/3ac59884-6810-456c-9bd2-191aa9ea7368.png')">
+                            Ajouter au panier
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-footer">
+                <a href="boutique.html" class="btn btn-secondary">Voir toute la collection →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- VALEURS -->
+    <section class="section values-section">
+        <div class="container">
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">🌿</div>
+                    <h3 class="value-title">100% Naturel</h3>
+                    <p class="value-text">Cire de soja végétale, sans paraffine ni produits chimiques</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🇫🇷</div>
+                    <h3 class="value-title">Fait en France</h3>
+                    <p class="value-text">Artisanat français, façonné à la main avec passion</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">♻️</div>
+                    <h3 class="value-title">Éco-Responsable</h3>
+                    <p class="value-text">Emballages recyclables, engagement environnemental</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🎨</div>
+                    <h3 class="value-title">Personnalisable</h3>
+                    <p class="value-text">Couleurs, parfums, messages gravés selon vos envies</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TÉMOIGNAGES -->
+    <section class="section testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">⭐ 4.9/5 sur 200 avis</span>
+                <h2 class="section-title">Ils nous font confiance</h2>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"J'ai commandé des bougies personnalisées pour mon mariage. Le résultat était absolument magnifique ! Tous mes invités ont adoré. Service impeccable."</p>
+                    <div class="testimonial-author">
+                        <strong>Sophie Martin</strong>
+                        <span>Mariée 2024</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Qualité exceptionnelle, odeurs sublimes et durée de combustion incroyable. Je recommande à 100% pour tous vos événements spéciaux."</p>
+                    <div class="testimonial-author">
+                        <strong>Marie Dubois</strong>
+                        <span>Cliente régulière</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Très satisfaite de mon achat ! Les bougies sont magnifiques et l'équipe est très professionnelle. L'ambiance créée est magique."</p>
+                    <div class="testimonial-author">
+                        <strong>Emma Laurent</strong>
+                        <span>Décoratrice d'intérieur</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Prêt à créer votre bougie unique ?</h2>
+                <p class="cta-subtitle">Commencez votre voyage olfactif et illuminez vos moments précieux</p>
+                <div class="cta-buttons">
+                    <a href="boutique.html" class="btn btn-primary">Découvrir la boutique</a>
+                    <a href="contact.html" class="btn btn-outline-white">Nous contacter</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">NessyCrea</h3>
+                    <p class="footer-text">Bougies artisanales premium en cire de soja naturelle. Fabriquées à la main en France avec passion.</p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-subtitle">Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="boutique.html">Boutique</a></li>
+                        <li><a href="a-propos.html">À propos</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-subtitle">Contact</h4>
+                    <ul class="footer-links">
+                        <li>📧 contact@nessycrea.fr</li>
+                        <li>📞 01 23 45 67 89</li>
+                        <li>📍 123 Rue de la Créativité, Paris</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 NessyCrea. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- DRAWER PANIER (FERMÉ PAR DÉFAUT) -->
+    <div class="cart-drawer">
+        <div class="cart-header">
+            <h3>Mon Panier</h3>
+            <button class="close-cart" aria-label="Fermer">×</button>
+        </div>
+        <div class="cart-items"></div>
+        <div class="cart-footer">
+            <div class="cart-total-container">
+                <span>Total:</span>
+                <span class="cart-total">0.00€</span>
+            </div>
+            <button class="btn btn-primary btn-checkout">Commander</button>
+            <button class="btn btn-outline close-cart">Continuer les achats</button>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="cart-overlay"></div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
