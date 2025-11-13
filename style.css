@@ -4665,6 +4665,103 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   }
 }
 
+/* Image Cards Styles */
+.valeur-image-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 16px 16px 0 0;
+}
+
+.valeur-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.valeur-card-modern:hover .valeur-image {
+  transform: scale(1.08);
+}
+
+.valeur-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(94, 82, 64, 0.85) 100%);
+  z-index: 1;
+}
+
+/* Adjust card content for image cards */
+.valeur-with-image {
+  position: relative;
+}
+
+.valeur-with-image .valeur-card-inner {
+  padding-top: 220px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Background image card (wide card) */
+.valeur-with-bg {
+  position: relative;
+  min-height: 320px;
+  overflow: hidden;
+}
+
+.valeur-bg-image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+.valeur-bg-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(33, 128, 141, 0.95) 0%, rgba(94, 82, 64, 0.9) 100%);
+  z-index: 1;
+}
+
+.valeur-overlay-content {
+  position: relative;
+  z-index: 2;
+}
+
+.valeur-with-bg .valeur-icon-modern {
+  background: rgba(252, 252, 249, 0.15);
+  backdrop-filter: blur(10px);
+}
+
+.valeur-with-bg .valeur-icon-modern svg {
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+}
+
+.valeur-with-bg .valeur-title-modern,
+.valeur-with-bg .valeur-desc-modern {
+  color: rgba(252, 252, 249, 1);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.valeur-with-bg .valeur-feature-modern {
+  background: rgba(252, 252, 249, 0.1);
+  backdrop-filter: blur(10px);
+  border-color: rgba(252, 252, 249, 0.2);
+}
+
+.valeur-with-bg .valeur-feature-modern::before {
+  background: rgba(252, 252, 249, 1);
+}
+
+.valeur-with-bg .valeur-feature-text {
+  color: rgba(252, 252, 249, 0.95);
+}
+
 @media (max-width: 768px) {
   .section-valeurs-modern {
     padding: 60px 0;
@@ -4710,6 +4807,18 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   .stat-number-modern {
     font-size: 36px;
   }
+
+  .valeur-image-wrapper {
+    height: 160px;
+  }
+
+  .valeur-with-image .valeur-card-inner {
+    padding-top: 180px;
+  }
+
+  .valeur-with-bg {
+    min-height: 280px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -4729,5 +4838,17 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
 
   .stat-number-modern {
     font-size: 32px;
+  }
+
+  .valeur-image-wrapper {
+    height: 140px;
+  }
+
+  .valeur-with-image .valeur-card-inner {
+    padding-top: 160px;
+  }
+
+  .valeur-with-bg {
+    min-height: 260px;
   }
 }
