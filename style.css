@@ -4382,7 +4382,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
 
 .valeurs-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 32px;
   margin-bottom: 56px;
 }
@@ -4394,6 +4394,14 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   overflow: hidden;
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(94, 82, 64, 0.08);
+}
+
+/* Centrer la 4ème card */
+.valeur-card-centered {
+  grid-column: 2 / 4;
+  max-width: 600px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .valeur-card:hover {
@@ -4442,10 +4450,22 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   justify-content: center;
   margin-bottom: 20px;
   box-shadow: 0 4px 12px rgba(33, 128, 141, 0.25);
+  transition: all 0.3s ease;
 }
 
 .valeur-icon svg {
   stroke: white;
+  transition: stroke 0.3s ease;
+}
+
+/* Effet hover beige sur les icônes */
+.valeur-card:hover .valeur-icon {
+  background: linear-gradient(135deg, #D4C5A9, #C4B299);
+  box-shadow: 0 4px 16px rgba(212, 197, 169, 0.35);
+}
+
+.valeur-card:hover .valeur-icon svg {
+  stroke: var(--nc-brown);
 }
 
 /* Title */
@@ -4536,6 +4556,16 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+  .valeurs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .valeur-card-centered {
+    grid-column: 1 / 3;
+  }
+}
+
 @media (max-width: 768px) {
   .valeurs-section {
     padding: 60px 0;
@@ -4545,6 +4575,11 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
     grid-template-columns: 1fr;
     gap: 24px;
     margin-bottom: 40px;
+  }
+
+  .valeur-card-centered {
+    grid-column: 1;
+    max-width: 100%;
   }
 
   .valeur-image {
