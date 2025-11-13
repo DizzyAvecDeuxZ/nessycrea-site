@@ -11,6 +11,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress-bar" id="scroll-progress"></div>
+
   <!-- HEADER / NAVIGATION -->
   <header class="header" id="header">
     <div class="navbar-container container">
@@ -194,59 +197,243 @@
     <!-- À PROPOS -->
     <section id="about" class="section section-about">
       <div class="container">
-        <h2 class="section-title">Notre Histoire</h2>
-        <div class="about-story">
-          <div class="story-block block-img-left">
-            <div class="img-story"></div>
-            <div>
-              <h4>Genèse artisanale</h4>
-              <p>NessyCrea est née du désir de proposer des bougies uniques, alliant savoir-faire traditionnel et design moderne. Chaque création évoque l’élégance, la nature et l’émotion d’un lieu chaleureux.</p>
+        <div class="about-header">
+          <span class="about-badge">Notre Histoire</span>
+          <h2 class="about-main-title">Une passion devenue artisanat</h2>
+          <p class="about-subtitle">Découvrez l'histoire de NessyCrea, née d'un amour pour les bougies artisanales et le savoir-faire traditionnel français</p>
+        </div>
+
+        <!-- Bento Grid Layout -->
+        <div class="story-bento-grid">
+          <!-- Large Card: Genèse -->
+          <div class="bento-card bento-large">
+            <div class="bento-card-image">
+              <div class="img-story"></div>
+              <div class="bento-overlay"></div>
+            </div>
+            <div class="bento-card-content">
+              <div class="bento-icon">✨</div>
+              <h3>Genèse artisanale</h3>
+              <p>NessyCrea est née en 2020 du désir de proposer des bougies uniques, alliant savoir-faire traditionnel et design moderne. Chaque création évoque l'élégance, la nature et l'émotion d'un lieu chaleureux.</p>
+              <div class="bento-stats">
+                <div class="stat-item">
+                  <span class="stat-number">2020</span>
+                  <span class="stat-label">Année de création</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-number">100%</span>
+                  <span class="stat-label">Fait main</span>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="story-block block-img-right">
-            <div>
-              <h4>Un atelier à taille humaine</h4>
-              <p>Nos bougies sont coulées à la main à Paris, avec des matières nobles et éthiques, par la fondatrice inspirée par la lumière et les senteurs.</p>
+
+          <!-- Medium Card: Atelier -->
+          <div class="bento-card bento-medium">
+            <div class="bento-card-content-only">
+              <div class="bento-icon">🏠</div>
+              <h3>Un atelier parisien</h3>
+              <p>Nos bougies sont coulées à la main dans notre atelier situé au cœur de Paris, avec des matières nobles et éthiques.</p>
             </div>
-            <div class="img-story founder-img"></div>
+            <div class="bento-card-image-small">
+              <div class="founder-img"></div>
+            </div>
+          </div>
+
+          <!-- Small Card: Valeurs -->
+          <div class="bento-card bento-small">
+            <div class="bento-icon-large">🌱</div>
+            <h4>Naturel & Éco-responsable</h4>
+            <p>Cires végétales et parfums sans CMR</p>
+          </div>
+
+          <!-- Small Card: Excellence -->
+          <div class="bento-card bento-small">
+            <div class="bento-icon-large">⭐</div>
+            <h4>Excellence artisanale</h4>
+            <p>Chaque pièce contrôlée avec soin</p>
+          </div>
+
+          <!-- Wide Card: Mission -->
+          <div class="bento-card bento-wide">
+            <div class="bento-quote">
+              <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path>
+                <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"></path>
+              </svg>
+              <blockquote>
+                <p>"Mon objectif est de créer des bougies qui racontent une histoire, qui évoquent des émotions et qui transforment chaque espace en un lieu de bien-être et de sérénité."</p>
+                <cite>— Vanessa, Fondatrice de NessyCrea</cite>
+              </blockquote>
+            </div>
           </div>
         </div>
         <div class="about-process">
           <h3 class="process-title">Processus Artisanal</h3>
           <div class="process-steps flex gap-8">
-            <div class="process-step">
+            <div class="process-step" data-step="1">
               <span class="step-icon">🎨</span>
               <h5>Conception</h5>
               <p>Élaboration de formules et design élégants.</p>
             </div>
-            <div class="process-step">
+            <div class="process-step" data-step="2">
               <span class="step-icon">🥄</span>
               <h5>Préparation</h5>
               <p>Sélection des cires et parfums naturels.</p>
             </div>
-            <div class="process-step">
+            <div class="process-step" data-step="3">
               <span class="step-icon">🕯️</span>
               <h5>Coulage</h5>
               <p>Réalisation manuelle, chaque pièce contrôlée.</p>
             </div>
-            <div class="process-step">
+            <div class="process-step" data-step="4">
               <span class="step-icon">✨</span>
               <h5>Finition</h5>
               <p>Soin de chaque détail, packaging raffiné.</p>
             </div>
           </div>
         </div>
-        <div class="about-engagements">
-          <h3>Nos Engagements</h3>
-          <ul class="engagements-list">
-            <li><strong>Écologie</strong> : Réduction des déchets et choix responsables</li>
-            <li><strong>Qualité</strong> : Ingrédients purs et contrôle strict</li>
-            <li><strong>Tradition</strong> : Savoir-faire transmis et valorisé</li>
-            <li><strong>Innovation</strong> : Design contemporain, senteurs inédites</li>
-          </ul>
-        </div>
-        <div class="atelier-img-block">
-          <div class="img-atelier"></div>
+        <!-- Nos Engagements Section -->
+        <div class="engagements-section">
+          <div class="engagements-header">
+            <span class="engagements-badge">Nos Valeurs</span>
+            <h3 class="engagements-title">Nos Engagements</h3>
+            <p class="engagements-subtitle">Des valeurs fortes qui guident chaque création</p>
+          </div>
+
+          <div class="engagements-grid">
+            <!-- Engagement Card 1: Écologie -->
+            <div class="engagement-card">
+              <div class="engagement-icon-wrapper">
+                <svg class="engagement-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                  <circle cx="12" cy="12" r="10"/>
+                </svg>
+                <div class="engagement-icon-bg"></div>
+              </div>
+              <div class="engagement-content">
+                <div class="engagement-header-card">
+                  <h4 class="engagement-title-card">Écologie</h4>
+                  <span class="engagement-badge-small">100% Naturel</span>
+                </div>
+                <p class="engagement-description">Cires végétales, emballages recyclables et réduction de notre empreinte carbone à chaque étape de fabrication.</p>
+                <ul class="engagement-features">
+                  <li>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                    Cires 100% végétales
+                  </li>
+                  <li>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                    Emballages recyclables
+                  </li>
+                </ul>
+              </div>
+              <div class="engagement-shine"></div>
+            </div>
+
+            <!-- Engagement Card 2: Qualité -->
+            <div class="engagement-card">
+              <div class="engagement-icon-wrapper">
+                <svg class="engagement-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                <div class="engagement-icon-bg"></div>
+              </div>
+              <div class="engagement-content">
+                <div class="engagement-header-card">
+                  <h4 class="engagement-title-card">Qualité Premium</h4>
+                  <span class="engagement-badge-small">Fait Main</span>
+                </div>
+                <p class="engagement-description">Sélection rigoureuse des matières premières et contrôle qualité à chaque étape pour des produits d'exception.</p>
+                <ul class="engagement-features">
+                  <li>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                    Ingrédients premium
+                  </li>
+                  <li>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                    Contrôle rigoureux
+                  </li>
+                </ul>
+              </div>
+              <div class="engagement-shine"></div>
+            </div>
+
+            <!-- Engagement Card 3: Tradition -->
+            <div class="engagement-card">
+              <div class="engagement-icon-wrapper">
+                <svg class="engagement-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2v20"/>
+                  <path d="M8 6c-2.5 0-4.5 2-4.5 4.5S5.5 15 8 15h8c2.5 0 4.5-2 4.5-4.5S18.5 6 16 6"/>
+                  <path d="M12 6v14"/>
+                </svg>
+                <div class="engagement-icon-bg"></div>
+              </div>
+              <div class="engagement-content">
+                <div class="engagement-header-card">
+                  <h4 class="engagement-title-card">Savoir-Faire</h4>
+                  <span class="engagement-badge-small">Artisanal</span>
+                </div>
+                <p class="engagement-description">Techniques artisanales traditionnelles transmises et perfectionnées pour créer des pièces uniques et authentiques.</p>
+                <ul class="engagement-features">
+                  <li>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                    Méthodes traditionnelles
+                  </li>
+                  <li>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                    Pièces uniques
+                  </li>
+                </ul>
+              </div>
+              <div class="engagement-shine"></div>
+            </div>
+
+            <!-- Engagement Card 4: Innovation -->
+            <div class="engagement-card">
+              <div class="engagement-icon-wrapper">
+                <svg class="engagement-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+                <div class="engagement-icon-bg"></div>
+              </div>
+              <div class="engagement-content">
+                <div class="engagement-header-card">
+                  <h4 class="engagement-title-card">Innovation</h4>
+                  <span class="engagement-badge-small">Design</span>
+                </div>
+                <p class="engagement-description">Création continue de nouvelles fragrances et designs contemporains pour surprendre et inspirer nos clients.</p>
+                <ul class="engagement-features">
+                  <li>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                    Senteurs inédites
+                  </li>
+                  <li>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                    Design moderne
+                  </li>
+                </ul>
+              </div>
+              <div class="engagement-shine"></div>
+            </div>
+          </div>
         </div>
         <a href="#contact" class="btn btn--primary btn--lg btn-about-contact">Contactez-nous</a>
       </div>
@@ -282,39 +469,64 @@
             <span class="success-check">✓</span> Message envoyé avec succès !
           </div>
         </form>
-        <div class="contact-infos flex gap-16">
-          <div class="contact-info">
-            <h4>Email</h4>
-            <p><a href="mailto:contact@nessycrea.fr">contact@nessycrea.fr</a></p>
-          </div>
-          <div class="contact-info">
-            <h4>Téléphone</h4>
-            <p><a href="tel:+33612345678">+33 6 12 34 56 78</a></p>
-          </div>
-          <div class="contact-info">
-            <h4>Adresse</h4>
-            <p>123 Rue de la Créativité, 75001 Paris</p>
-          </div>
-          <div class="contact-info">
-            <h4>Horaires</h4>
-            <p>Lun-Ven: 10h-18h<br>Sam: 14h-19h</p>
+        <!-- Contact Info Cards -->
+        <div class="contact-info-wrapper">
+          <div class="contact-info-grid">
+            <div class="contact-info-card">
+              <div class="contact-icon">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                  <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                  <path d="m2 7 10 6 10-6"></path>
+                </svg>
+              </div>
+              <div class="contact-info-content">
+                <h5>Email</h5>
+                <a href="mailto:contact@nessycrea.fr">contact@nessycrea.fr</a>
+                <span class="contact-label">Réponse sous 24h</span>
+              </div>
+            </div>
+
+            <div class="contact-info-card">
+              <div class="contact-icon">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+              </div>
+              <div class="contact-info-content">
+                <h5>Téléphone</h5>
+                <a href="tel:+33612345678">+33 6 12 34 56 78</a>
+                <span class="contact-label">Lun-Sam 10h-18h</span>
+              </div>
+            </div>
+
+            <div class="contact-info-card">
+              <div class="contact-icon">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+              <div class="contact-info-content">
+                <h5>Adresse</h5>
+                <p>123 Rue de la Créativité<br>75001 Paris, France</p>
+              </div>
+            </div>
+
+            <div class="contact-info-card">
+              <div class="contact-icon">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+              </div>
+              <div class="contact-info-content">
+                <h5>Horaires</h5>
+                <p>Lun-Ven: 10h-18h<br>Samedi: 14h-19h<br>Dimanche: Fermé</p>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="contact-map">
-          <h3 class="section-title" style="margin-top: 40px; margin-bottom: 20px;">Localisation</h3>
-          <div class="maps-container">
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9916256937595!2d2.3200410156743516!3d48.8588443793276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e2964e34e2d%3A0x8ddca9ee380ef7e0!2sLouvre%20Museum!5m2!1sen!2sfr" 
-              width="100%" 
-              height="450" 
-              style="border:none; border-radius: 8px;" 
-              allowfullscreen="" 
-              loading="lazy" 
-              referrerpolicy="no-referrer-when-downgrade"
-              title="Localisation NessyCrea">
-            </iframe>
-          </div>
-        </div>
+
       </div>
     </section>
 
@@ -432,27 +644,63 @@
 
   <!-- FOOTER -->
   <footer class="footer">
-    <div class="container flex-col items-center">
-      <nav class="footer-nav">
-        <ul class="footer-menu flex gap-8">
-          <li><a href="#accueil">Accueil</a></li>
-          <li><a href="#boutique">Boutique</a></li>
-          <li><a href="#about">À propos</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="#admin">Admin</a></li>
+    <div class="container">
+      <div class="footer-content">
+        <!-- Brand Section -->
+        <div class="footer-brand">
+          <h3>NessyCrea</h3>
+          <p>Bougies artisanales luxueuses, faites main avec passion à Paris. Découvrez nos créations uniques et naturelles.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram" class="footer-icon">📷</a>
+            <a href="#" aria-label="Facebook" class="footer-icon">🐦</a>
+            <a href="#" aria-label="Pinterest" class="footer-icon">💗</a>
+          </div>
+        </div>
+
+        <!-- Navigation Section -->
+        <div class="footer-section">
+          <h4>Navigation</h4>
+          <nav class="footer-nav">
+            <ul class="footer-menu">
+              <li><a href="#accueil">Accueil</a></li>
+              <li><a href="#boutique">Boutique</a></li>
+              <li><a href="#about">À propos</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <div class="footer-contact-quick">
+            <p>Email :<br><a href="mailto:contact@nessycrea.fr">contact@nessycrea.fr</a></p>
+            <p>Tél :<br><a href="tel:+33612345678">+33 6 12 34 56 78</a></p>
+            <p>Adresse :<br>123 Rue de la Créativité<br>75001 Paris</p>
+          </div>
+        </div>
+
+        <!-- Newsletter Section -->
+        <div class="footer-section">
+          <h4>Newsletter</h4>
+          <p style="color: rgba(245, 241, 237, 0.7); font-size: 1em; line-height: 1.6; margin-bottom: 16px;">Inscrivez-vous pour recevoir nos actualités et offres exclusives.</p>
+          <form class="footer-newsletter" onsubmit="event.preventDefault(); alert('Merci pour votre inscription!');">
+            <input type="email" placeholder="Votre email" required>
+            <button type="submit">S'inscrire</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <div class="copyright">
+          &copy; 2025 NessyCrea. Tous droits réservés.
+        </div>
+        <ul class="footer-legal">
+          <li><a href="#">Mentions légales</a></li>
+          <li><a href="#">Politique de confidentialité</a></li>
+          <li><a href="#">CGV</a></li>
         </ul>
-      </nav>
-      <div class="footer-social flex gap-8">
-        <a href="#" aria-label="Instagram" class="footer-icon">&#x1F4F7;</a>
-        <a href="#" aria-label="Facebook" class="footer-icon">&#x1F426;</a>
-        <a href="#" aria-label="Pinterest" class="footer-icon">&#x1F497;</a>
-      </div>
-      <div class="footer-contact-quick">
-        <p>Email : <a href="mailto:contact@nessycrea.fr">contact@nessycrea.fr</a></p>
-        <p>Tél : <a href="tel:+33612345678">+33 6 12 34 56 78</a></p>
-      </div>
-      <div class="copyright">
-        &copy; 2025 NessyCrea. Tous droits réservés.
       </div>
     </div>
   </footer>

@@ -243,7 +243,24 @@ function setupFilters(){
 }
 // NAVIGATION STICKY & SMOOTH SCROLL
 function setupNavigation(){
+  const header = document.getElementById('header');
   const links = Array.from(document.querySelectorAll('.nav__link'));
+
+  // Add scroll effect to header
+  let lastScroll = 0;
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.scrollY;
+
+    // Add/remove scrolled class
+    if (currentScroll > 10) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+
+    lastScroll = currentScroll;
+  });
+
   links.forEach(link => {
     link.addEventListener('click', function(e) {
       e.preventDefault();
@@ -256,6 +273,7 @@ function setupNavigation(){
       if(window.innerWidth<900) document.querySelector('.nav__list').classList.remove('open');
     });
   });
+
   // Mark section as active on scroll
   window.addEventListener('scroll',()=>{
     const scrollY = window.scrollY;
@@ -305,6 +323,30 @@ function animateOnLoad(){
     document.querySelectorAll('.slide-up').forEach(el=>el.style.opacity=1);
     document.querySelectorAll('.scale-up').forEach(el=>el.style.opacity=1);
   },160);
+}
+
+// SCROLL ANIMATIONS - Intersection Observer
+function setupScrollAnimations() {
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  // Observe all cards and sections
+  const elementsToAnimate = document.querySelectorAll('.card-product, .valeur-card, .testimonial-card, .section-title');
+  elementsToAnimate.forEach(el => {
+    el.classList.add('animate-on-scroll');
+    observer.observe(el);
+  });
 }
 // CONTACT FORM VALIDATION
 function setupContactForm(){
@@ -667,9 +709,13 @@ function showCartToast(product) {
 function openCartDrawer() {
   const drawer = document.getElementById('cart-drawer');
   const backdrop = document.getElementById('cart-backdrop');
-  
+
+  if (!drawer || !backdrop) return;
+
   drawer.classList.remove('hidden', 'closing');
+  drawer.style.display = 'flex';
   backdrop.classList.remove('hidden');
+  backdrop.style.display = 'block';
   document.body.style.overflow = 'hidden';
 }
 
@@ -677,39 +723,72 @@ function openCartDrawer() {
 function closeCartDrawer() {
   const drawer = document.getElementById('cart-drawer');
   const backdrop = document.getElementById('cart-backdrop');
-  
+
+  if (!drawer || !backdrop) return;
+
   drawer.classList.add('closing');
-  
+  backdrop.classList.add('closing');
+
   setTimeout(() => {
     drawer.classList.add('hidden');
     drawer.classList.remove('closing');
+    drawer.style.display = 'none';
     backdrop.classList.add('hidden');
+    backdrop.classList.remove('closing');
+    backdrop.style.display = 'none';
     document.body.style.overflow = '';
   }, 300);
 }
 
 // Setup cart event listeners
 function setupCart() {
+  // Ensure cart is closed on init
+  const drawer = document.getElementById('cart-drawer');
+  const backdrop = document.getElementById('cart-backdrop');
+  if (drawer) {
+    drawer.classList.add('hidden');
+    drawer.style.display = 'none';
+  }
+  if (backdrop) {
+    backdrop.classList.add('hidden');
+    backdrop.style.display = 'none';
+  }
+
   // Open cart
   const cartBtn = document.getElementById('cart-btn');
   if (cartBtn) {
-    cartBtn.addEventListener('click', openCartDrawer);
+    cartBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      openCartDrawer();
+    });
   }
-  
+
   // Close cart
   const closeBtn = document.getElementById('cart-close-btn');
   if (closeBtn) {
-    closeBtn.addEventListener('click', closeCartDrawer);
+    closeBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      closeCartDrawer();
+    });
   }
-  
-  const backdrop = document.getElementById('cart-backdrop');
+
   if (backdrop) {
-    backdrop.addEventListener('click', closeCartDrawer);
+    backdrop.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      closeCartDrawer();
+    });
   }
-  
+
   const continueBtn = document.getElementById('continue-shopping');
   if (continueBtn) {
-    continueBtn.addEventListener('click', closeCartDrawer);
+    continueBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      closeCartDrawer();
+    });
   }
   
   // Checkout button
@@ -752,10 +831,203 @@ function setupCart() {
       }
     }
   });
+
+  // Close cart with ESC key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      const drawer = document.getElementById('cart-drawer');
+      if (drawer && !drawer.classList.contains('hidden')) {
+        closeCartDrawer();
+      }
+    }
+  });
+}
+
+// CUSTOM SELECT BOXES
+function createCustomSelects() {
+  const selects = document.querySelectorAll('.filter-group select');
+
+  selects.forEach(select => {
+    // Créer le conteneur custom
+    const customSelect = document.createElement('div');
+    customSelect.className = 'custom-select';
+
+    // Créer le bouton trigger
+    const trigger = document.createElement('div');
+    trigger.className = 'custom-select-trigger';
+    trigger.innerHTML = `
+      <span>${select.options[select.selectedIndex].text}</span>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    `;
+
+    // Créer le dropdown
+    const dropdown = document.createElement('div');
+    dropdown.className = 'custom-select-dropdown';
+
+    Array.from(select.options).forEach((option, index) => {
+      const optionDiv = document.createElement('div');
+      optionDiv.className = 'custom-select-option';
+      if (index === select.selectedIndex) optionDiv.classList.add('selected');
+      optionDiv.textContent = option.text;
+      optionDiv.dataset.value = option.value;
+
+      optionDiv.addEventListener('click', () => {
+        // Mettre à jour le select natif
+        select.selectedIndex = index;
+        select.dispatchEvent(new Event('change'));
+
+        // Mettre à jour l'affichage
+        trigger.querySelector('span').textContent = option.text;
+
+        // Mettre à jour les classes selected
+        dropdown.querySelectorAll('.custom-select-option').forEach(opt => {
+          opt.classList.remove('selected');
+        });
+        optionDiv.classList.add('selected');
+
+        // Fermer le dropdown
+        customSelect.classList.remove('open');
+      });
+
+      dropdown.appendChild(optionDiv);
+    });
+
+    // Toggle dropdown
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      // Fermer les autres
+      document.querySelectorAll('.custom-select').forEach(cs => {
+        if (cs !== customSelect) cs.classList.remove('open');
+      });
+      customSelect.classList.toggle('open');
+    });
+
+    customSelect.appendChild(trigger);
+    customSelect.appendChild(dropdown);
+
+    // Cacher le select natif et insérer le custom
+    select.style.display = 'none';
+    select.parentNode.insertBefore(customSelect, select);
+  });
+
+  // Fermer les dropdowns en cliquant ailleurs
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.custom-select').forEach(cs => {
+      cs.classList.remove('open');
+    });
+  });
+}
+
+// ========== SCROLL EFFECTS ==========
+
+// Scroll Progress Bar
+function updateScrollProgress() {
+  const progressBar = document.getElementById('scroll-progress');
+  if (!progressBar) return;
+
+  const windowHeight = window.innerHeight;
+  const documentHeight = document.documentElement.scrollHeight;
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+  const scrollPercentage = (scrollTop / (documentHeight - windowHeight)) * 100;
+  progressBar.style.width = scrollPercentage + '%';
+}
+
+// Scroll Reveal Animations
+function initScrollReveal() {
+  const revealElements = document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-reveal-scale');
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  revealElements.forEach(el => {
+    revealObserver.observe(el);
+  });
+}
+
+// Add scroll reveal classes to sections
+function addScrollRevealClasses() {
+  // Add to section titles
+  const sectionTitles = document.querySelectorAll('.section-title');
+  sectionTitles.forEach(title => {
+    if (!title.classList.contains('scroll-reveal')) {
+      title.classList.add('scroll-reveal');
+    }
+  });
+
+  // Add to product cards
+  const productCards = document.querySelectorAll('.card-product');
+  productCards.forEach((card, index) => {
+    if (!card.classList.contains('scroll-reveal')) {
+      card.classList.add('scroll-reveal');
+    }
+  });
+
+  // Add to value cards
+  const valueCards = document.querySelectorAll('.valeur-card');
+  valueCards.forEach((card, index) => {
+    if (!card.classList.contains('scroll-reveal-scale')) {
+      card.classList.add('scroll-reveal-scale');
+    }
+  });
+
+  // Add to testimonial cards
+  const testimonialCards = document.querySelectorAll('.testimonial-card');
+  testimonialCards.forEach((card, index) => {
+    if (!card.classList.contains('scroll-reveal')) {
+      card.classList.add('scroll-reveal');
+    }
+  });
+
+  // Add to contact info cards
+  const contactCards = document.querySelectorAll('.contact-info-card');
+  contactCards.forEach((card, index) => {
+    if (!card.classList.contains('scroll-reveal')) {
+      card.classList.add('scroll-reveal');
+    }
+  });
+
+  // Add to story blocks
+  const storyBlocks = document.querySelectorAll('.story-block');
+  storyBlocks.forEach((block, index) => {
+    if (index % 2 === 0) {
+      if (!block.classList.contains('scroll-reveal-left')) {
+        block.classList.add('scroll-reveal-left');
+      }
+    } else {
+      if (!block.classList.contains('scroll-reveal-right')) {
+        block.classList.add('scroll-reveal-right');
+      }
+    }
+  });
 }
 
 // INIT
 window.addEventListener('DOMContentLoaded',function(){
+  // Force close cart on page load (CRITICAL FIX)
+  const drawer = document.getElementById('cart-drawer');
+  const backdrop = document.getElementById('cart-backdrop');
+  if (drawer) {
+    drawer.classList.add('hidden');
+    drawer.style.display = 'none';
+  }
+  if (backdrop) {
+    backdrop.classList.add('hidden');
+    backdrop.style.display = 'none';
+  }
+  document.body.style.overflow = '';
+
   renderVedettes();
   renderTestimonials();
   renderBoutiqueProducts();
@@ -768,7 +1040,19 @@ window.addEventListener('DOMContentLoaded',function(){
   setupAdminLogin();
   setupAdminLogout();
   setupAdminTabs();
+
+  // Initialize scroll effects
+  setTimeout(() => {
+    addScrollRevealClasses();
+    initScrollReveal();
+  }, 100);
   loadCart();
   setupCart();
   animateOnLoad();
+  setupScrollAnimations();
+  createCustomSelects();
+
+  // Scroll progress bar
+  updateScrollProgress();
+  window.addEventListener('scroll', updateScrollProgress);
 });
