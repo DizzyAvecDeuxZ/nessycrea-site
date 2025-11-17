@@ -62,9 +62,10 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-3 mb-4">
+            <div className="flex items-center gap-3 mb-4 relative">
               <Logo size="md" animated={false} />
               <span className="font-display text-xl font-bold">NessyCrea</span>
+              <span className="text-lg">🎄</span>
             </div>
             <p className="text-cream-100/60 text-sm leading-relaxed mb-4">
               Bougies artisanales depuis 2020
