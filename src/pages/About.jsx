@@ -3,7 +3,7 @@ import { Heart, Leaf, Award, Users } from 'lucide-react';
 
 export default function About() {
   return (
-    <main className="pt-32 pb-24">
+    <main className="pt-32 pb-0">
       {/* Hero */}
       <section className="section-padding">
         <div className="max-w-4xl mx-auto text-center">
@@ -68,17 +68,26 @@ export default function About() {
               transition={{ duration: 0.8 }}
               className="relative"
             >
-              <div className="aspect-square bg-gradient-to-br from-cream-200 to-cream-300 rounded-3xl overflow-hidden relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-amber-warm/20 to-caramel/10" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-32 h-32 bg-gradient-to-br from-amber-warm to-caramel rounded-full flex items-center justify-center mx-auto mb-6">
-                      <Heart className="w-16 h-16 text-cream-50" />
-                    </div>
-                    <p className="font-display text-2xl font-semibold text-charcoal">
-                      Fait avec amour
-                    </p>
+              <div className="aspect-square bg-gradient-to-br from-cream-200 to-cream-300 rounded-3xl overflow-hidden relative shadow-xl">
+                {/* Image de bougie en fond */}
+                <img
+                  src="https://user-gen-media-assets.s3.amazonaws.com/seedream_images/5ff06277-c960-49ff-88c3-80023c260e0d.png"
+                  alt="Bougie NessyCrea"
+                  className="absolute inset-0 w-full h-full object-cover opacity-50"
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-amber-warm/30 to-caramel/20" />
+
+                {/* Badge en haut centré */}
+                <div className="absolute top-2 left-1/2 -translate-x-1/2 text-center z-10">
+                  <div className="w-16 h-16 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg border-2 border-amber-warm/40">
+                    <Heart className="w-8 h-8 text-amber-warm" />
                   </div>
+                  <p className="font-display text-xl font-bold text-charcoal drop-shadow-sm">
+                    Fait avec amour
+                  </p>
+                  <p className="text-charcoal/70 text-sm mt-1 font-medium">
+                    Artisanat français
+                  </p>
                 </div>
               </div>
               <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-gradient-to-br from-amber-warm/30 to-caramel/20 rounded-full blur-2xl" />
@@ -159,9 +168,9 @@ export default function About() {
       </section>
 
       {/* CTA */}
-      <section className="section-padding bg-charcoal text-cream-100 relative overflow-hidden">
+      <section className="pt-16 pb-0 bg-charcoal text-cream-100 relative overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gradient-to-b from-amber-warm/10 to-transparent rounded-full blur-3xl" />
-        <div className="relative max-w-3xl mx-auto text-center">
+        <div className="relative max-w-3xl mx-auto text-center pb-16">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}

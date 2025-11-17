@@ -8,6 +8,7 @@ import CartDrawer from './components/Cart/CartDrawer';
 import Toast from './components/UI/Toast';
 import ScrollProgress from './components/UI/ScrollProgress';
 import PageTransition from './components/UI/PageTransition';
+import useScrollToTop from './hooks/useScrollToTop';
 import Home from './pages/Home';
 import Shop from './pages/Shop';
 import About from './pages/About';
@@ -15,6 +16,7 @@ import Contact from './pages/Contact';
 
 function AnimatedRoutes({ onAddToCart }) {
   const location = useLocation();
+  useScrollToTop();
 
   return (
     <AnimatePresence mode="wait">

@@ -8,6 +8,13 @@ export default function ProductCard({ product, onAddToCart, onViewDetails }) {
     grand: 'bg-purple-100 text-purple-700',
   };
 
+  const stockColors = {
+    in_stock: 'bg-green-500/90 text-white',
+    low_stock: 'bg-orange-500/90 text-white',
+    pre_order: 'bg-blue-500/90 text-white',
+    out_of_stock: 'bg-gray-500/90 text-white',
+  };
+
   return (
     <motion.div
       layout
@@ -35,7 +42,18 @@ export default function ProductCard({ product, onAddToCart, onViewDetails }) {
             )}
           </div>
 
-          {/* Size badge */}
+          {/* Stock badge - top left */}
+          {product.stock && (
+            <div
+              className={`absolute top-3 left-3 px-3 py-1.5 backdrop-blur-sm rounded-full text-xs font-semibold shadow-lg ${
+                stockColors[product.stock]
+              }`}
+            >
+              {product.stockLabel}
+            </div>
+          )}
+
+          {/* Size badge - top right */}
           <div
             className={`absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-semibold ${
               sizeColors[product.size]
@@ -44,8 +62,8 @@ export default function ProductCard({ product, onAddToCart, onViewDetails }) {
             {product.sizeLabel}
           </div>
 
-          {/* Type badge */}
-          <div className="absolute top-3 left-3 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-medium text-caramel-dark">
+          {/* Type badge - bottom left */}
+          <div className="absolute bottom-3 left-3 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-medium text-caramel-dark shadow-md">
             {product.type}
           </div>
 

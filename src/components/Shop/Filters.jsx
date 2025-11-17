@@ -1,9 +1,32 @@
 import { motion } from 'framer-motion';
 import { Filter, X } from 'lucide-react';
+import CustomSelect from '../UI/CustomSelect';
 
 export default function Filters({ filters, onChange, onReset }) {
   const hasActiveFilters =
     filters.type || filters.price || filters.size;
+
+  const typeOptions = [
+    { value: '', label: 'Tous les types' },
+    { value: 'Gourmand', label: 'Gourmand' },
+    { value: 'Relaxation', label: 'Relaxation' },
+    { value: 'Naturel', label: 'Naturel' },
+    { value: 'Luxe', label: 'Luxe' }
+  ];
+
+  const priceOptions = [
+    { value: '', label: 'Tous les prix' },
+    { value: 'low', label: 'Moins de 25€' },
+    { value: 'mid', label: '25€ - 30€' },
+    { value: 'high', label: 'Plus de 30€' }
+  ];
+
+  const sizeOptions = [
+    { value: '', label: 'Toutes tailles' },
+    { value: 'petit', label: 'Petit (90-100g)' },
+    { value: 'moyen', label: 'Moyen (160-180g)' },
+    { value: 'grand', label: 'Grand (250-300g)' }
+  ];
 
   return (
     <motion.div
@@ -21,56 +44,31 @@ export default function Filters({ filters, onChange, onReset }) {
 
         <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-4">
           {/* Type filter */}
-          <div>
-            <label className="block text-sm font-medium text-charcoal/70 mb-2">
-              Type
-            </label>
-            <select
-              value={filters.type}
-              onChange={(e) => onChange('type', e.target.value)}
-              className="input-cosy py-3"
-            >
-              <option value="">Tous les types</option>
-              <option value="Gourmand">Gourmand</option>
-              <option value="Relaxation">Relaxation</option>
-              <option value="Naturel">Naturel</option>
-              <option value="Luxe">Luxe</option>
-            </select>
-          </div>
+          <CustomSelect
+            label="Type"
+            value={filters.type}
+            onChange={(value) => onChange('type', value)}
+            options={typeOptions}
+            placeholder="Tous les types"
+          />
 
           {/* Price filter */}
-          <div>
-            <label className="block text-sm font-medium text-charcoal/70 mb-2">
-              Prix
-            </label>
-            <select
-              value={filters.price}
-              onChange={(e) => onChange('price', e.target.value)}
-              className="input-cosy py-3"
-            >
-              <option value="">Tous les prix</option>
-              <option value="low">Moins de 25€</option>
-              <option value="mid">25€ - 30€</option>
-              <option value="high">Plus de 30€</option>
-            </select>
-          </div>
+          <CustomSelect
+            label="Prix"
+            value={filters.price}
+            onChange={(value) => onChange('price', value)}
+            options={priceOptions}
+            placeholder="Tous les prix"
+          />
 
           {/* Size filter */}
-          <div>
-            <label className="block text-sm font-medium text-charcoal/70 mb-2">
-              Taille
-            </label>
-            <select
-              value={filters.size}
-              onChange={(e) => onChange('size', e.target.value)}
-              className="input-cosy py-3"
-            >
-              <option value="">Toutes tailles</option>
-              <option value="petit">Petit (90-100g)</option>
-              <option value="moyen">Moyen (160-180g)</option>
-              <option value="grand">Grand (250-300g)</option>
-            </select>
-          </div>
+          <CustomSelect
+            label="Taille"
+            value={filters.size}
+            onChange={(value) => onChange('size', value)}
+            options={sizeOptions}
+            placeholder="Toutes tailles"
+          />
         </div>
 
         {hasActiveFilters && (

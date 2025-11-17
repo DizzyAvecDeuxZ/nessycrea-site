@@ -28,7 +28,22 @@ const itemVariants = {
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24">
+
+      {/* Background Video */}
+      <div className="absolute inset-0 w-full h-full -z-10">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover opacity-50"
+        >
+          <source src="/background-video.mp4" type="video/mp4" />
+        </video>
+        {/* Overlay gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-cream-50/30 via-white/20 to-cream-100/30" />
+      </div>
 
       {/* Decorative candle flames */}
       <div className="absolute top-1/3 left-16 hidden lg:block">

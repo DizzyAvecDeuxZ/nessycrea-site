@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, MapPin, Phone, Send, CheckCircle } from 'lucide-react';
+import FAQ from '../components/UI/FAQ';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -189,6 +190,11 @@ export default function Contact() {
               )}
             </div>
           </motion.div>
+        </div>
+
+        {/* FAQ Section */}
+        <div className="mt-20">
+          <FAQ />
         </div>
       </div>
     </main>

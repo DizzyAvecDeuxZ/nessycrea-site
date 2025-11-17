@@ -1,0 +1,32 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Circle background -->
+  <circle cx="100" cy="100" r="95" fill="#E8DCC8"/>
+
+  <!-- Top border line (long, extends beyond sides) -->
+  <rect x="25" y="63" width="150" height="2.5" fill="#8B7355"/>
+
+  <!-- Bottom border line (long, extends beyond sides) -->
+  <rect x="25" y="134.5" width="150" height="2.5" fill="#8B7355"/>
+
+  <!-- Left border line (short, doesn't connect to top/bottom) -->
+  <rect x="25" y="70" width="2.5" height="25" fill="#8B7355"/>
+
+  <!-- Right border line (short, doesn't connect to top/bottom) -->
+  <rect x="172.5" y="70" width="2.5" height="25" fill="#8B7355"/>
+
+  <!-- Bottom left border line (short, doesn't connect to top/bottom) -->
+  <rect x="25" y="105" width="2.5" height="25" fill="#8B7355"/>
+
+  <!-- Bottom right border line (short, doesn't connect to top/bottom) -->
+  <rect x="172.5" y="105" width="2.5" height="25" fill="#8B7355"/>
+
+  <!-- Text paths for cursive handwriting effect -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&amp;display=swap');
+    </style>
+  </defs>
+
+  <!-- "Nessy Créa" in elegant cursive -->
+  <text x="100" y="108" font-family="'Great Vibes', 'Brush Script MT', cursive" font-size="42" fill="#8B7355" text-anchor="middle" letter-spacing="2">Nessy Créa</text>
+</svg>
