@@ -143,8 +143,11 @@ export default function Footer() {
           </div>
 
           <div className="text-center">
-            <p className="text-cream-100/40 text-sm">
+            <p className="text-cream-100/40 text-sm mb-2">
               © 2024 NessyCrea. Tous droits réservés. Fait avec ♥ en France
+            </p>
+            <p className="text-amber-warm/60 text-xs italic">
+              ✨ Joyeuses fêtes de fin d'année ✨
             </p>
           </div>
         </div>

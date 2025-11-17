@@ -8,6 +8,7 @@ import CartDrawer from './components/Cart/CartDrawer';
 import Toast from './components/UI/Toast';
 import ScrollProgress from './components/UI/ScrollProgress';
 import PageTransition from './components/UI/PageTransition';
+import ChristmasDecor from './components/UI/ChristmasDecor';
 import useScrollToTop from './hooks/useScrollToTop';
 import Home from './pages/Home';
 import Shop from './pages/Shop';
@@ -60,6 +61,7 @@ function App() {
       <CartProvider>
         <div className="min-h-screen flex flex-col">
           <ScrollProgress />
+          <ChristmasDecor />
           <Navbar />
           <div className="flex-1">
             <AnimatedRoutes onAddToCart={handleAddToCart} />
