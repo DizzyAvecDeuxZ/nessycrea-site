@@ -40,16 +40,11 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="group flex items-center">
-          <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden bg-cream-100 shadow-soft transition-transform duration-300 group-hover:scale-105">
+          <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden bg-cream-100 shadow-soft transition-transform duration-300 group-hover:scale-105 p-2">
             <img
               src="/logo-nessycrea.png"
               alt="NessyCrea"
-              className="w-full h-full"
-              style={{
-                objectFit: 'cover',
-                objectPosition: 'center',
-                transform: 'scale(1.5)'
-              }}
+              className="w-full h-full object-contain"
             />
           </div>
         </Link>
