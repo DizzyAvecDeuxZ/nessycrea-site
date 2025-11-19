@@ -11,6 +11,11 @@ export default function Navbar() {
   const { cartCount, setIsCartOpen } = useCart();
   const location = useLocation();
 
+  // Fermer le menu mobile lors du changement de route
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
