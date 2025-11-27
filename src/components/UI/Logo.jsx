@@ -14,13 +14,12 @@ export default function Logo({ size = 'md', animated = true }) {
       whileHover={animated ? { scale: 1.05 } : {}}
       className={`${s.size} relative`}
     >
-      {/* Logo container with beige background */}
-      <div className="w-full h-full rounded-full flex items-center justify-center overflow-hidden" style={{ backgroundColor: '#E8DCC8', clipPath: 'circle(50%)' }}>
+      {/* Logo container with beige background - no overflow hidden */}
+      <div className="w-full h-full rounded-full flex items-center justify-center" style={{ backgroundColor: '#E8DCC8' }}>
         <img
           src="/logo-nessycrea.png"
           alt="NessyCrea Logo"
-          className="object-cover"
-          style={{ width: '110%', height: '110%' }}
+          className="w-full h-full object-contain p-1"
         />
       </div>
 
