@@ -37,12 +37,12 @@ export default function Hero() {
           loop
           muted
           playsInline
-          className="w-full h-full object-cover opacity-50"
+          className="w-full h-full object-cover opacity-30"
         >
           <source src="/background-video.mp4" type="video/mp4" />
         </video>
-        {/* Overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-cream-50/30 via-white/20 to-cream-100/30" />
+        {/* Overlay gradient - assombri */}
+        <div className="absolute inset-0 bg-gradient-to-b from-cream-50/40 via-charcoal/10 to-cream-100/40" />
       </div>
 
       {/* Decorative candle flames */}
@@ -107,7 +107,18 @@ export default function Hero() {
               transition={{ delay: 1.2, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             />
           </span>{' '}
-          <span className="text-gradient">intérieur</span>
+          <span
+            className="inline-block"
+            style={{
+              background: 'linear-gradient(to right, #8B4513, #D4A574, #FFD700, #D4A574, #8B4513)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              filter: 'drop-shadow(0 2px 8px rgba(212, 165, 116, 0.4))'
+            }}
+          >
+            intérieur
+          </span>
         </motion.h1>
 
         <motion.p
@@ -155,13 +166,13 @@ export default function Hero() {
           ].map((stat, i) => (
             <motion.div
               key={i}
-              whileHover={{ y: -5 }}
-              className="text-center group cursor-default"
+              whileHover={{ y: -5, scale: 1.05 }}
+              className="text-center group cursor-default bg-white/60 backdrop-blur-md border border-caramel/20 rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-xl hover:border-caramel/40 transition-all duration-300"
             >
               <div className="font-display text-2xl sm:text-3xl md:text-5xl font-bold text-gradient mb-2 md:mb-3 group-hover:scale-110 transition-transform duration-300">
                 {stat.value}
               </div>
-              <div className="text-xs md:text-sm font-medium text-charcoal/50 uppercase tracking-wider">
+              <div className="text-xs md:text-sm font-medium text-charcoal/70 uppercase tracking-wider">
                 {stat.label}
               </div>
             </motion.div>
