@@ -2,16 +2,17 @@ import { motion } from 'framer-motion';
 import { Filter, X } from 'lucide-react';
 import CustomSelect from '../UI/CustomSelect';
 
-export default function Filters({ filters, onChange, onReset }) {
+export default function Filters({ filters, onChange, onReset, availableTypes = [], showSizeFilter = true }) {
   const hasActiveFilters =
     filters.type || filters.price || filters.size;
 
+  // Build type options based on available types
   const typeOptions = [
     { value: '', label: 'Tous les types' },
-    { value: 'Gourmand', label: 'Gourmand' },
-    { value: 'Relaxation', label: 'Relaxation' },
-    { value: 'Naturel', label: 'Naturel' },
-    { value: 'Luxe', label: 'Luxe' }
+    ...availableTypes.map(type => ({
+      value: type,
+      label: type === 'Diffuseurs' ? 'Diffuseurs Voiture' : type
+    }))
   ];
 
   const priceOptions = [
@@ -28,6 +29,13 @@ export default function Filters({ filters, onChange, onReset }) {
     { value: 'grand', label: 'Grand (250-300g)' }
   ];
 
+  // Only show type filter if there are multiple types
+  const showTypeFilter = availableTypes.length > 1;
+  
+  // Calculate grid columns based on visible filters
+  const visibleFiltersCount = (showTypeFilter ? 1 : 0) + 1 + (showSizeFilter ? 1 : 0);
+  const gridCols = visibleFiltersCount === 1 ? 'sm:grid-cols-1' : visibleFiltersCount === 2 ? 'sm:grid-cols-2' : 'sm:grid-cols-3';
+
   return (
     <motion.div
       initial={{ opacity: 0, y: -20 }}
@@ -42,15 +50,17 @@ export default function Filters({ filters, onChange, onReset }) {
           </span>
         </div>
 
-        <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-4">
-          {/* Type filter */}
-          <CustomSelect
-            label="Type"
-            value={filters.type}
-            onChange={(value) => onChange('type', value)}
-            options={typeOptions}
-            placeholder="Tous les types"
-          />
+        <div className={`flex-1 grid grid-cols-1 ${gridCols} gap-4`}>
+          {/* Type filter - only show if multiple types */}
+          {showTypeFilter && (
+            <CustomSelect
+              label="Type"
+              value={filters.type}
+              onChange={(value) => onChange('type', value)}
+              options={typeOptions}
+              placeholder="Tous les types"
+            />
+          )}
 
           {/* Price filter */}
           <CustomSelect
@@ -61,14 +71,16 @@ export default function Filters({ filters, onChange, onReset }) {
             placeholder="Tous les prix"
           />
 
-          {/* Size filter */}
-          <CustomSelect
-            label="Taille"
-            value={filters.size}
-            onChange={(value) => onChange('size', value)}
-            options={sizeOptions}
-            placeholder="Toutes tailles"
-          />
+          {/* Size filter - conditional */}
+          {showSizeFilter && (
+            <CustomSelect
+              label="Taille"
+              value={filters.size}
+              onChange={(value) => onChange('size', value)}
+              options={sizeOptions}
+              placeholder="Toutes tailles"
+            />
+          )}
         </div>
 
         {hasActiveFilters && (
